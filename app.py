@@ -16,8 +16,8 @@ ask = Ask(app, "/")
 def get_duration():
     gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
     now = datetime.now()
-    result = (gmaps.distance_matrix(ORIGIN, DESTINATION, TRANSIT_MODE, departure_time=now))
-    duration = result['rows'][0]['elements'][0]['duration']['text']
+    result = (gmaps.distance_matrix(ORIGIN, DESTINATION, TRANSIT_MODE, departure_time=now, traffic_model='best_guess'))
+    duration = result['rows'][0]['elements'][0]['duration_in_traffic']['text']
     return duration
 
 
